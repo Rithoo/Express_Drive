@@ -114,17 +114,17 @@
 
                 <div class="row">
                     <!-- <div class="col-lg-5">
-                                                                        <div class="card-style mb-30">
-                                                                            <div class="title d-flex justify-content-between align-items-center">
-                                                                                <div class="left">
-                                                                                    <h6 class="text-medium mb-30">Sells by State</h6>
-                                                                                </div>
-                                                                            </div>
-                                                                             End Title
-                                                                            <div id="map" style="width: 100%; height: 400px; overflow: hidden;"></div>
-                                                                            <p>Last updated: 7 days ago</p>
-                                                                        </div>
-                                                                    </div> -->
+                                                                                                                        <div class="card-style mb-30">
+                                                                                                                            <div class="title d-flex justify-content-between align-items-center">
+                                                                                                                                <div class="left">
+                                                                                                                                    <h6 class="text-medium mb-30">Sells by State</h6>
+                                                                                                                                </div>
+                                                                                                                            </div>
+                                                                                                                             End Title
+                                                                                                                            <div id="map" style="width: 100%; height: 400px; overflow: hidden;"></div>
+                                                                                                                            <p>Last updated: 7 days ago</p>
+                                                                                                                        </div>
+                                                                                                                    </div> -->
                     <!-- End Col -->
                     <div class="col-lg-12">
                         <div class="d-flex justify-content-end mb-2">
@@ -374,11 +374,21 @@
                                                             </li>
                                                             <li class="dropdown-item">
 
-                                                                <a href="#edit{{ $user->id }}" type="button" class="btn btn-primary text-gray"
-                                                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                                    Edit
-                                                                </a>
-                                                                <div class="offcanvas offcanvas-end" tabindex="-1"
+                                                                <!-- Button trigger modal -->
+                                                                {{-- <button type="button" class="text-gray"
+                                                                    data-bs-toggle="modal" id="#edit{{ $user->id }}"
+                                                                    data-bs-target="#exampleModal">
+                                                                    Launch demo modal
+                                                                </button> --}}
+
+                                                                <!-- Modal -->
+
+
+                                                                <a class="text-gray" id="#edit{{ $user->id }}"
+                                                                    type="button" data-bs-toggle="offcanvas1"
+                                                                    data-bs-target="#offcanvasRight"
+                                                                    aria-controls="offcanvasRight"> Edit </a>
+                                                                <div class="offcanvas1 offcanvas-start" tabindex="-1"
                                                                     id="edit{{ $user->id }}"
                                                                     aria-labelledby="offcanvasRightLabel">
                                                                     <div class="offcanvas-header">
@@ -554,6 +564,7 @@
                                                                         </div>
 
                                                                     </div>
+                                                                </div>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -575,7 +586,6 @@
             <!-- end container -->
         </section>
         <!-- ========== section end ========== -->
-
         <!-- ========== footer start =========== -->
         <footer class="footer">
             <div class="container-fluid">
