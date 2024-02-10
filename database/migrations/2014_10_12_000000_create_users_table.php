@@ -21,6 +21,9 @@ return new class extends Migration
             $table->foreignId('address_id')->constrained('addresses')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
+            $table->tinyInteger('is_admin')
+                ->default(0)
+                ->comment("0:user,1:admin");
             $table->timestamps();
         });
     }

@@ -24,6 +24,7 @@ class UserSeeder extends Seeder
                 'email' => 'john.doe@example.com',
                 'password' => Hash::make('password'), // Vous devriez utiliser bcrypt() pour hasher le mot de passe
                 'avatar' => null,
+                'is_admin' => 0,
                 'address_id' => 1, // Remplacez cela par l'ID réel de l'adresse associée
                 'email_verified_at' => now(),
                 'remember_token' => Str::random(10),
@@ -37,6 +38,7 @@ class UserSeeder extends Seeder
                 'email' => 'jane.smith@example.com',
                 'password' => Hash::make('password'),
                 'avatar' => null,
+                'is_admin' => 1,
                 'address_id' => 2, // Remplacez cela par l'ID réel de l'adresse associée
                 'email_verified_at' => now(),
                 'remember_token' => Str::random(10),

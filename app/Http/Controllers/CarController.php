@@ -41,6 +41,7 @@ class CarController extends Controller
             'year' => 'required|integer',
             'quantity' => 'required|integer',
             'price' => 'required|numeric',
+            'status' => 'required|integer|in:0,1',
             'picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -58,7 +59,7 @@ class CarController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id):View
+    public function show(string $id): View
     {
         $cars = Car::findOrFail($id);
         return view('cars.show', ['cars' => $cars]);
@@ -85,6 +86,7 @@ class CarController extends Controller
             'year' => 'required|integer',
             'quantity' => 'required|integer',
             'price' => 'required|numeric',
+            'status' => 'required|integer|in:0,1',
             'picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 

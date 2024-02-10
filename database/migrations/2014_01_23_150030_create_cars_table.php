@@ -15,9 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('marque');
             $table->string('model');
-            $table->integer('year');
+            $table->year('year');
             $table->integer('quantity');
             $table->float('price');
+            $table->tinyInteger('status')
+                ->default(0)
+                ->comment("0:not available,1:available");;
             $table->string('picture')->nullable();
             $table->timestamps();
         });

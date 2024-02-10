@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="{{asset('admin/assets/images/favicon.svg')}}" type="image/x-icon" />
     <title>PlainAdmin Demo | Bootstrap 5 Admin Template</title>
+    {{-- @vite(['resources/css/app.css']) --}}
 
     <!-- ========== All CSS files linkup ========= -->
     <link rel="stylesheet" href="{{asset('admin/assets/css/bootstrap.min.css')}}" />
@@ -14,8 +15,7 @@
     <link rel="stylesheet" href="{{asset('admin/assets/css/fullcalendar.css')}}" />
     <link rel="stylesheet" href="{{asset('admin/assets/css/fullcalendar.css')}}" />
     <link rel="stylesheet" href="{{asset('admin/assets/css/main.css')}}" />
-
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/js/app.js', ])
   </head>
   <body>
     <!-- ======== Preloader =========== -->
@@ -37,6 +37,7 @@
     <script src="{{asset('admin/assets/js/world-merc.js')}}"></script>
     <script src="{{asset('admin/assets/js/polyfill.js')}}"></script>
     <script src="{{asset('admin/assets/js/main.js')}}"></script>
+    {{-- <script src="{{asset('admin/assets/js/main.js')}}"></script> --}}
 
     <script>
       // ======== jvectormap activation
@@ -573,5 +574,15 @@
       });
         // =========== chart four end
     </script>
+<script>
+  function removeUser(event) {
+      event.preventDefault(); // Empêche le comportement par défaut du lien
+
+      if (confirm('Are you sure you want to remove this user?')) {
+          document.getElementById('removeForm').submit(); // Soumet le formulaire
+      }
+  }
+</script>
+
   </body>
 </html>

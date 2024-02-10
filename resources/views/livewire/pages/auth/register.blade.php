@@ -84,18 +84,39 @@ new #[Layout('layouts.guest')] class extends Component {
             );
 
             Auth::login($user);
+            
 
+            // if (auth()->user()->is_admin == 1 ) {
+                
+            //     $this->redirect(RouteServiceProvider::DASHBOARD_HOME, navigate: true); 
+
+            // }
+            
             $this->redirect(RouteServiceProvider::HOME, navigate: true);
-            //$this->redirect()->route('/');
+            
         } catch (\Throwable $th) {
             \Illuminate\Support\Facades\Log::error($th);
         }
     }
-}; 
+};
 ?>
 
 <div>
+
     <form wire:submit="register">
+        <div class="row">
+            <div class="col-12">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+            </div>
+        </div>
         <!-- Name -->
         <div>
             <x-input-label for="last_name" :value="__('Last Name')" />
@@ -181,6 +202,9 @@ new #[Layout('layouts.guest')] class extends Component {
             <x-text-input wire:model="postal_code" id="postal_code" class="block mt-1 w-full" type="text"
                 name="postal_code" required autofocus autocomplete="postal_code" />
             <x-input-error :messages="$errors->get('postal_code')" class="mt-2" />
+            {{-- @error('postal_code')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror --}}
         </div>
 
         <!-- Password -->

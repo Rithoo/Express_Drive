@@ -23,6 +23,7 @@ class CarSeeder extends Seeder
                 'year' => 2022,
                 'quantity' => 10,
                 'price' => 25000.00,
+                'status' => 0,
                 'picture' => null,
 
             ],
@@ -33,6 +34,7 @@ class CarSeeder extends Seeder
                 'year' => 2021,
                 'quantity' => 5,
                 'price' => 35000.00,
+                'status' => 1,
                 'picture' => null,
             ],
             // Ajoutez d'autres données selon vos besoins
@@ -44,6 +46,6 @@ class CarSeeder extends Seeder
                 Car::create($data);
             }
         }
-        Car::factory(3)->create(); // Crée 8 utilisateurs avec des données aléatoires
+        Car::factory(3)->create(); // Crée n utilisateurs avec des données aléatoires
     }
 }

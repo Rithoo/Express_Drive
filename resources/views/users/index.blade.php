@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+
     @include('components.sidebar')
 
     <!-- ======== main-wrapper start =========== -->
@@ -81,7 +82,7 @@
                             </div>
                             <div class="content">
                                 <h6 class="mb-10">Total user</h6>
-                                <h3 class="text-bold mb-10">{{ count($users ?? []) }}</h3>
+                                <h3 class="text-bold mb-10">{{ $countUsers ?? 0 }}</h3>
                                 <p class="text-sm text-danger">
                                     <i class="lni lni-arrow-down"></i> %
                                     <span class="text-gray"></span>
@@ -114,17 +115,17 @@
 
                 <div class="row">
                     <!-- <div class="col-lg-5">
-                                                                                                                        <div class="card-style mb-30">
-                                                                                                                            <div class="title d-flex justify-content-between align-items-center">
-                                                                                                                                <div class="left">
-                                                                                                                                    <h6 class="text-medium mb-30">Sells by State</h6>
-                                                                                                                                </div>
-                                                                                                                            </div>
-                                                                                                                             End Title
-                                                                                                                            <div id="map" style="width: 100%; height: 400px; overflow: hidden;"></div>
-                                                                                                                            <p>Last updated: 7 days ago</p>
-                                                                                                                        </div>
-                                                                                                                    </div> -->
+                                                                                                                                        <div class="card-style mb-30">
+                                                                                                                                            <div class="title d-flex justify-content-between align-items-center">
+                                                                                                                                                <div class="left">
+                                                                                                                                                    <h6 class="text-medium mb-30">Sells by State</h6>
+                                                                                                                                                </div>
+                                                                                                                                            </div>
+                                                                                                                                             End Title
+                                                                                                                                            <div id="map" style="width: 100%; height: 400px; overflow: hidden;"></div>
+                                                                                                                                            <p>Last updated: 7 days ago</p>
+                                                                                                                                        </div>
+                                                                                                                                    </div> -->
                     <!-- End Col -->
                     <div class="col-lg-12">
                         <div class="d-flex justify-content-end mb-2">
@@ -370,9 +371,22 @@
                                                         <ul class="dropdown-menu dropdown-menu-end"
                                                             aria-labelledby="moreAction1">
                                                             <li class="dropdown-item">
-                                                                <a href="#0" class="text-gray">Remove</a>
+                                                                <form id="removeForm" action="{{Route('users.destroy', $user->id)}}"
+                                                                    method="POST">
+                                                                    @csrf
+                                                                    <!-- Ajoutez le jeton CSRF pour protéger votre formulaire -->
+                                                                    @method('DELETE')
+                                                                    <!-- Utilisez la méthode HTTP DELETE pour supprimer la ressource -->
+
+                                                                    <!-- Lien "Remove" qui soumettra le formulaire -->
+                                                                    <button type="submit" onclick="removeUser(event)"
+                                                                        class="text-gray">Remove</button>
+                                                                </form>
+
                                                             </li>
                                                             <li class="dropdown-item">
+                                                                <a href="{{ url('/users/' . $user->id . '/edit') }}"
+                                                                    class="text-gray">Edit</a>
 
                                                                 <!-- Button trigger modal -->
                                                                 {{-- <button type="button" class="text-gray"
@@ -383,12 +397,14 @@
 
                                                                 <!-- Modal -->
 
+                                                                {{-- <a class="btn btn-primary bg-primary" type="button" data-bs-toggle="offcanvas"
+                                                                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Add New </a> --}}
 
-                                                                <a class="text-gray" id="#edit{{ $user->id }}"
-                                                                    type="button" data-bs-toggle="offcanvas1"
+                                                                {{-- <a class="text-gray" id="#edit{{ $user->id }}"
+                                                                    type="button" data-bs-toggle="offcanvas"
                                                                     data-bs-target="#offcanvasRight"
                                                                     aria-controls="offcanvasRight"> Edit </a>
-                                                                <div class="offcanvas1 offcanvas-start" tabindex="-1"
+                                                                <div class="offcanvas offcanvas-start" tabindex="-1"
                                                                     id="edit{{ $user->id }}"
                                                                     aria-labelledby="offcanvasRightLabel">
                                                                     <div class="offcanvas-header">
@@ -399,8 +415,8 @@
                                                                             aria-label="Close"></button>
                                                                     </div>
 
-                                                                    <div class="offcanvas-body">
-                                                                        <div class="container mt-5">
+                                                                    <div class="offcanvas-body"> --}}
+                                                                {{-- <div class="container mt-5">
                                                                             <form
                                                                                 action="{{ route('users.update', $user->id) }}"
                                                                                 method=" "
@@ -561,12 +577,12 @@
                                                                                 <button type="submit"
                                                                                     class="btn btn-primary">Submit</button>
                                                                             </form>
-                                                                        </div>
+                                                                        </div> --}}
 
-                                                                    </div>
-                                                                </div>
+                                                                {{-- </div> --}}
                                                             </li>
                                                         </ul>
+                                                        {{-- </div> --}}
                                                     </div>
                                                 </td>
                                             </tr>
@@ -574,6 +590,7 @@
                                     </tbody>
                                 </table>
                                 <!-- End Table -->
+                                {{ $users->links() }}
                             </div>
                         </div>
                     </div>

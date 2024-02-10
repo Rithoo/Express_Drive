@@ -16,18 +16,19 @@ class CarFactory extends Factory
      * @return array<string, mixed>
      */
 
-     protected $model = Car::class;
-     
+    protected $model = Car::class;
+
     public function definition(): array
     {
         return [
             // 'id' => null,
             'marque' => $this->faker->word,
             'model' => $this->faker->word,
-            'year' => $this->faker->year,
+            'year' => $this->faker->year(),
             'quantity' => $this->faker->randomNumber(2),
             'price' => $this->faker->randomFloat(2, 1000, 50000),
             'picture' => $this->faker->imageUrl(),
+            'status' => $this->faker->numberBetween(0, 1),
             'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'updated_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
         ];

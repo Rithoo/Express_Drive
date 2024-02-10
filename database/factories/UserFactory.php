@@ -36,6 +36,7 @@ class UserFactory extends Factory
             'email' => $this->faker->unique()->safeEmail,
             'password' => bcrypt('password'), // You may customize the default password here
             'avatar' => $this->faker->imageUrl(),
+            'is_admin' => $this->faker->numberBetween(0, 1),
             'address_id' => $this->faker->randomElement($addressIds),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),

@@ -25,7 +25,8 @@ class User extends Authenticatable
         'avatar',
         'email_verified_at',
         'password',
-        'address_id'
+        'address_id',
+        'is_admin'
     ];
 
     /**
@@ -57,4 +58,6 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Address::class, 'address_id');
     }
+
+    
 }
